@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Sushma Ma'am</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+        text-align: center;
+    }
+
+    h1 {
+        color: #fff;
+        margin-top: 40px;
+        font-size: 32px;
+        text-shadow: 2px 2px 8px #00000060;
+    }
+
+    /* Candle */
+    .candle-container {
+        margin-top: 60px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .candle {
+        width: 40px;
+        height: 100px;
+        background: #fff1ae;
+        border-radius: 10px;
+        margin: auto;
+        position: relative;
+        box-shadow: 0 0 15px #00000040 inset;
+    }
+
+    .flame {
+        width: 25px;
+        height: 35px;
+        background: radial-gradient(circle, yellow, orange, red);
+        border-radius: 50% 50% 60% 60%;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: flicker 0.15s infinite alternate;
+    }
+
+    @keyframes flicker {
+        0% { transform: translateX(-50%) scale(1); }
+        100% { transform: translateX(-50%) scale(1.1); }
+    }
+
+    /* After candle blow-out button */
+    #nextStep {
+        display: none;
+        margin-top: 40px;
+        padding: 12px 24px;
+        background: #ffffffdd;
+        color: #d6336c;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0 4px 10px #00000040;
+        transition: 0.3s;
+    }
+
+    #nextStep:hover {
+        background: #fff;
+        transform: scale(1.07);
+    }
+
+    /* Balloons & Flowers */
+    .fall {
+        position: fixed;
+        top: -100px;
+        font-size: 30px;
+        animation: fallDown 4s linear forwards;
+    }
+
+    @keyframes fallDown {
+        to { top: 120%; }
+    }
+
+    /* Final message */
+    #message {
+        display: none;
+        margin-top: 40px;
+        font-size: 28px;
+        color: #fff;
+        line-height: 40px;
+        text-shadow: 0 0 10px #00000070;
+        padding: 0 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>🎂 Hi Sushma Ma’am… Please click the candle 🔥</h1>
+
+<div class="candle-container" onclick="blowCandle()">
+    <div class="candle">
+        <div class="flame" id="flame"></div>
+    </div>
+</div>
+
+<button id="nextStep" onclick="celebrate()">Click here Ma’am 🎉</button>
+
+<div id="message">
+    <p>💖 **Happy Birthday Sushma Ma’am!** 💖</p>
+    <p>You are not just a teacher…  
+       You are a guiding light, a supporter, a blessing,  
+       And truly like a second mother to me.</p>
+    <p>Thank you for every encouragement,  
+       every smile,  
+       and every lesson that shaped my journey.  
+       I am forever grateful to you. 🌸</p>
+    <p>Wishing you a year filled with happiness, love & success 🎉</p>
+</div>
+
+<script>
+// Step 1: Blow out the candle
+function blowCandle() {
+    document.getElementById("flame").style.display = "none";
+
+    // Show next button
+    document.getElementById("nextStep").style.display = "inline-block";
+}
+
+// Step 2: Celebration animation + final message
+function celebrate() {
+    for (let i = 0; i < 25; i++) {
+        let emoji = document.createElement("div");
+        emoji.classList.add("fall");
+
+        const symbols = ["🎈", "🎉", "🌸", "🌺", "💐"];
+        emoji.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+
+        emoji.style.left = Math.random() * 100 + "vw";
+
+        emoji.style.animationDuration = (3 + Math.random() * 2) + "s";
+
+        document.body.appendChild(emoji);
+
+        setTimeout(() => emoji.remove(), 5000);
+    }
+
+    // Reveal final message
+    document.getElementById("message").style.display = "block";
+}
+</script>
+
+</body>
+</html>
